@@ -1,4 +1,4 @@
-FROM python:3.11
+FROM python:3.13-slim
 
 ARG command="--version"
 
@@ -6,8 +6,7 @@ COPY entrypoint.sh /entrypoint.sh
 
 RUN apt-get update -y
 
-RUN pip install awsebcli --no-build-isolation cryptography==3.3.1
-
+RUN pip install awsebcli 
 RUN chmod +x entrypoint.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
